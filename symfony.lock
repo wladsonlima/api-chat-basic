@@ -137,9 +137,6 @@
     "ocramius/proxy-manager": {
         "version": "2.2.2"
     },
-    "php-amqplib/php-amqplib": {
-        "version": "v2.9.2"
-    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
