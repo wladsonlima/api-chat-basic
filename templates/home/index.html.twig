@@ -4,32 +4,85 @@
 
 {% block  body %}
 
-    <div class="container" hidden>
-        <img src="{{ asset('assets/images/bandmember.jpg') }}" alt="Avatar">
-        <p>Hello. How are you today?</p>
-        <span class="time-right">11:00</span>
-    </div>
-    <div class="container darker" hidden>
-        <img src="{{ asset('assets/images/avatar_g2.jpg') }}" alt="Avatar" class="right">
-        <p>Hey! I'm fine. Thanks for asking!</p>
-        <span class="time-left">11:01</span>
-    </div>
+
 
 
     <div class="main">
         <div class="msg">
             <div class="container">
                 <img src="{{ asset('assets/images/chat.png' ) }}" alt="Avatar">
-                <p>Olá. Como podemos ajudar?</p>
+                <p>Olá, tudo bem? Sou o <b>Horácio</b>, assistente virtual da <b>XYZ</b> e estou aqui para te ajudar.
+                    <button type="button" id="startChat" class="btn btn-outline-primary">Vamos Comerçar?</button>
+                </p>
+
             </div>
+
+
         </div>
+
+
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+            <input type="text" id="textMessage" class="form-control" placeholder="Recipient's username"
+                   aria-label="Recipient's username"
                    aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-outline-success" type="button">Button</button>
+                <button class="btn btn-outline-success" id="sendMessage" type="button">Enviar</button>
             </div>
         </div>
     </div>
 
     {{ parent() }}{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#sendMessage").click(function () {
+
+                let textMessage = $("#textMessage").val();
+                console.log(textMessage);
+
+                let formData = {
+                    email: "wlad.fral@gmail.com",
+                    msgTo: "brunaPa1@email.com.br",
+                    messageText: textMessage,
+                    idUSerTo: 242,
+                    messageDate: '2019-07-31',
+                    user: '/api/users/252'
+                }
+
+                $.ajax({
+                    url: "http://localhost:8000/api/chat_messages",
+                    type: 'post',
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    beforeSend: function () {
+                        $(".msg").append("<div class='sendingMessage'> ENVIANDO...</div>");
+                    }
+                })
+                    .done(function (msg) {
+                        $(".sendingMessage").remove();
+                        console.log(msg);
+                    })
+
+                    .fail(function (jqXHR, textStatus, msg) {
+                        alert(msg);
+                    });
+
+
+            });
+
+
+        });
+
+        function getMessage(data) {
+            return (x * y);
+        }
+
+
+    </script>
+
+    {{ parent() }}
+{% endblock %}
