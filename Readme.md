@@ -14,3 +14,9 @@ Imagem esta disponível no **Docker hub**  `wladsonlima/basic-chat`
   `php bin/console serve:run 0.0.0.0:8000`
 
 Pronto agora acesse localhost:8000
+
+### Routes
+
+* Acesse a `**/**` para acesso do cliente 
+* Acesse a `**/pa**` para acesso do atendente  
+* Documentação API `**/api**`
