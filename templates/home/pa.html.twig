@@ -5,12 +5,13 @@
 {% block  body %}
 
     <div class="main">
-        <input type="text" id="email" value="wlad.fral@gmail.com" hidden>
-        <input type="text" id="id" value="302" hidden>
-        <input type="text" id="msgTo" value="brunaPa1@email.com.br" hidden>
-        <input type="text" id="idUSerTo" value="292" hidden>
+
+        <input type="text" id="email" value="brunaPa1@email.com.br" hidden>
+        <input type="text" id="id" value="292" hidden>
+        <input type="text" id="msgTo" value="wlad.fral@gmail.com" hidden>
+        <input type="text" id="idUSerTo" value="302" hidden>
         <input type="text" id="idChat" value="99" hidden>
-        <input type="text" id="nivel" value="cli" hidden>
+        <input type="text" id="nivel" value="pa" hidden>
 
         <div class="container template">
             <img class="userImage" src="" alt="Avatar" data-user1="{{ asset('assets/images/chat.png' ) }}"
@@ -18,18 +19,17 @@
             <p class="message"></p>
         </div>
 
-        <div class="container">
-            <img src="{{ asset('assets/images/chat.png' ) }}" alt="Avatar">
-            <p>Olá, tudo bem? Sou o Horácio, assistente virtual da XYZ e estou aqui para te ajudar.</p>
-        </div>
         <div class="messages">
 
-
+            <div class="container">
+                <img src="{{ asset('assets/images/chat.png' ) }}" alt="Avatar">
+                <p>Usuário: brunaPa1@email.com.br</p>
+            </div>
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" id="textMessage" class="form-control" placeholder="Informe sua Mensagem"
-                   aria-label="Informe sua Mensagem"
+            <input type="text" id="textMessage" class="form-control" placeholder="Menssagem"
+                   aria-label="Menssagem"
                    aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-outline-success" id="sendMessage" type="button">Enviar</button>

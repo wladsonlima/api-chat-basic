@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ChatMessageRepository")
+ * @ApiResource(attributes={"order"={"id": "ASC"}})
  */
 class ChatMessage
 {
@@ -32,6 +33,7 @@ class ChatMessage
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @ApiFilter(SearchFilter::class, strategy="partial")
      */
     private $msgTo;
 
@@ -55,6 +57,13 @@ class ChatMessage
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $messageDate;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     */
+    private $idChat;
+
 
     public function getId(): ?int
     {
@@ -138,5 +147,25 @@ class ChatMessage
         $this->user = $user;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdChat()
+    {
+        return $this->idChat;
+    }
+
+    /**
+     * @param mixed $idChat
+     * @return ChatMessage
+     */
+    public function setIdChat($idChat)
+    {
+        $this->idChat = $idChat;
+        return $this;
+    }
+
+
 
 }
