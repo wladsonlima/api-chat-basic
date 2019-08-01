@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     getMessage();
 
-    let urlBase = "http://127.0.0.1:8000/api/";
+    let urlBase = "http://127.0.0.1:8001/api/";
 
     $("#sendMessage").click(function () {
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
 function getMessage() {
 
-    let urlBase = "http://127.0.0.1:8000/api/";
+    let urlBase = "http://127.0.0.1:8001/api/";
     let $messages = $('.messages');
 
     $.ajax({
